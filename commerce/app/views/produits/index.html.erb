@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+<h1>Nos produits</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Description</th>
+      <th>Prix</th>
+      <th>Image</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%
+     pairImpair = 0
+     @produits.each do |produit|
+       pairImpair = 1 - pairImpair
+    %>
+      <tr valign="top" class="ligne<%= pairImpair %>">
+        <td width="20%"><span class="titreligne"><%= produit.nom %></td>
+        <td width="40%"><%= produit.description %></td>
+        <td><%= produit.prix %></td>
+        <td><img width="60" height="70" src="<%= produit.image %>" /></td>
+        <td class="actionsligne"><%= link_to 'Afficher', produit %><br />
+        <%= link_to 'Editer', edit_produit_path(produit) %><br />
+        <%= link_to 'Supprimer', produit, method: :delete, data: { confirm: 'Etes-vous certain ?' } %>
+		<%= link_to "Add to Cart", :action => 'ajouter_au_panier', :id => produit %></td>
+	  </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'Nouveau Produit', new_produit_path %>

@@ -1,0 +1,41 @@
+<div data-role="page" id="accueil" data-url="/produits?mobile2=1">
+<div data-role="header">
+<h1>Produits disponibles</h1>
+</div>
+<div data-role="content">
+<ol data-role="listview" data-inset="true" id="listeProduits">
+	
+	<% @produits.each do |produit| %>
+    <li><a href="#produit<%= produit.id %>">
+	<%= produit.nom %></a></li>
+	<% end %>
+	
+</ol>
+</div>
+</div><!-- /page -->
+
+<% @produits.each do |produit| %>
+
+<div data-role="page" id="produit<%= produit.id %>" >
+<div data-role="header">
+<h1>Produits disponibles</h1>
+<a href="#accueil" data-icon="arrow-l" class="ui-btn-left">Produits
+<h1><%= produit.nom %></h1></a>
+</div>
+<div data-role="content">
+<p>
+  <strong>Description:</strong>
+  <%= produit.description %>
+</p>
+<p>
+  <strong>Prix:</strong>
+  <%= produit.prix %>
+</p>
+<p>
+  <strong>Image:</strong>
+  <%= produit.image %>
+</p>
+<img width="60" height="70" src="<%= produit.image%>" />
+</div>
+</div><!-- /page -->
+<% end %>

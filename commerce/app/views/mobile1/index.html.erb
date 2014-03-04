@@ -1,0 +1,13 @@
+<div data-role="page" id="accueil" data-url="/produits?mobile1=1">
+<div data-role="header">
+<h1>Produits disponibles</h1>
+</div>
+<div data-role="content">
+<ol data-role="listview" data-inset="true" id="listeProduits">
+	<% @produits.each do |produit| %>
+    <li><a href="/produits/<%= produit.id %>?mobile1=1">
+	<%= produit.nom %>	</li></a>
+	<% end %>
+</ol>
+</div>
+</div><!-- /page -->

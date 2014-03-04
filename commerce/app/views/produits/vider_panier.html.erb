@@ -1,0 +1,7 @@
+<h1>Votre panier</h1>
+	<ul>
+    <% for article in @panier.selection %>
+	 <li><%= article %><%= @pp.find(article).nom %></li>
+	 <% end %>
+	</ul>
+<%= link_to 'Suprrimer Panier', :action =>'index' %>
